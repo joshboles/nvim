@@ -403,6 +403,24 @@ require('lazy').setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+
+      { 'rcarriga/nvim-notify' },
+
+      {
+        'smjonas/inc-rename.nvim',
+        config = function()
+          require('inc_rename').setup()
+        end,
+      },
+
+      {
+        'b0o/incline.nvim',
+        config = function()
+          require('incline').setup()
+        end,
+        -- Optional: Lazy load Incline
+        event = 'VeryLazy',
+      },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
