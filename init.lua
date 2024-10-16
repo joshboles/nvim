@@ -261,7 +261,7 @@ require('lazy').setup({
       require('catppuccin').setup {
         flavour = 'frappe', -- latte, frappe, macchiato, mocha
         background = { light = 'latte', dark = 'frappe' },
-        transparent_background = false,
+        transparent_background = true,
         term_colors = true,
         styles = {
           comments = { 'italic' },
