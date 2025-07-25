@@ -122,6 +122,30 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Setup language configurations
+local filetype_settings = {
+  go = {
+    expandtab = false,
+    tabstop = 4,
+    shiftwidth = 4,
+  },
+  python = {
+    expandtab = true,
+    tabstop = 4,
+    shiftwidth = 4,
+    softtabstop = 4,
+  },
+}
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = vim.tbl_keys(filetype_settings),
+  callback = function()
+    local settings = filetype_settings[vim.bo.filetype]
+    for option, value in pairs(settings) do
+      vim.opt_local[option] = value
+    end
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
